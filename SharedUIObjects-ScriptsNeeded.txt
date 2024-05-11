@@ -1,0 +1,30 @@
+SharedUI Scripts (needed):
+
+ScreenChanger.cs
+RoomTransition.cs
+Timer.cs
+TryAgainOptions.cs
+
+
+
+The objects within the scene SharedUiObjects (found in Theresa Quach's Scene folder of the EscapeAlchemy branch) are to be used as both implementable game objects and examples on how to nest these objects into the remaining
+rooms in the Escape Room project. Descriptions/How-tos are as follows:
+
+
+(Directional Light/Main Camera): You can ignore these; they are just default in new scenes. You will require them in your additional scenes, but Unity creates them automatically.
+
+ScreenChanger: Feel free to copy and paste these into each scene of your project. It provides the fading-into-black animation between your scenes. While working on your rooms, you may want to keep it inactive, but on gameplay/building,
+it needs to be active to work. The ScreenChanger.cs script should be attached to this GameObject and the ScreenChanger(Animator) in the Animations folder should be added to the script in the Inspector. The player can move onto the next scene by left-clicking the mouse.
+
+blackBackground/openStoryText: This is my example of how I set up a 2D story canvas for my opening screen. The same is used for my closing scene (with different text). Feel free to copy into a new scene to work on your own opening/closing scenes. You may need to adjust the position of the background/text in relation to your main camera (easiest to do with the Game view docked to the side or pulled over to another monitor).
+
+FirstPersonController: We all implemented the same FPC. What is different here is if you open the nested objects, under PlayerCamera, you will see TimerText (the numbers text), TimerLabel (just "Timer"), and Controls. This is the gameplay UI for the player as previously discussed. It is nested into the player camera so that it moves with the player. 
+	- Timer Text should have the Timer.cs script attached to it. In the inspector, you can see several fields to be filled out. Time Value represents the amount of time you want to put on the timer. Timer Text is this game object, just drag the TimerText object into this field. Try Again Screen is the other shared UI object in this scene (TryAgain). Click and drag that game object into this field. Lastly, FPC stands for "First Person Controller." This field is for the FirstPersonController object, and that should be dragged into here.
+
+
+ScreenChanger (RoomTransition): This one is similar to the ScreenChanger in that it implements a black fade, but instead of using the left mouse button to trigger the fade, the script (for me) has the trigger key be "E". This is because I have the player targeting the exit and interacting with it with "E" instead of the left mouse button. The script looks to see if the player hit "E" on a GameObject with the tag "ExitPortal" (again, this is specifically mine but you are able to change that section up to any tags you may have). If it detects it, the fade to the next scene is triggered.
+
+
+TryAgain: This is to be the shared Try Again screen for all games upon failure to complete the room in the allotted time limit. The TryAgain object has the TryAgainOptions.cs script attached to it. This object contains the OutOfTimeText (which just tells the player they ran out of time), the TryAgainReload Button (Yes button), and the TryAgainExit button (No button). 
+	- Under the TryAgainReload button, You will have to add a gameobject and function if it's not already there. To do so, click and drag the TryAgain game object into the GameObject field, then find and select ReloadScene under scripts. 
+	- similarly, the TryAgainExit button will also have the TryAgain game object added to the OnClick section, but this time, select the ExitToMain() function. Right now, as we don't have a main screen yet, this just reloads back to whatever screen is at index 0 in your build (the first screen in your build).

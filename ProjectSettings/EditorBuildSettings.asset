@@ -4,6 +4,18 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/OpeningAlchRoom.unity
+    guid: 39ea21d933f14ac40851a49c72acb7e1
+  - enabled: 1
+    path: Assets/Scenes/AlchemistsRoom.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/ClosingAlchRoom.unity
+    guid: 8e478f106092ecf46a42185eae8d0499
+  - enabled: 1
+    path: Assets/Scenes/CompletedGame.unity
+    guid: d6ce68ea9e8c46c4fb9010af27bdce88
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7, type: 2}

@@ -1,3 +1,14 @@
+/*  Project: Capstone 3D Escape Room Challenge - Alchemy Room
+    Author: Theresa Quach
+    Description: BallSortPuzzleManager manages the Ball Sort puzzle game in the alchemy escape room and contains functions used to
+                    check the win condition for the game as well as reset the global variable isSelectedThis used between BallSortPuzzleManager and TubeClicked.
+                This script is attached to the empty GameObject under which the GameObjects used to play the game (flasks, marbles, temporary selected marble container, and puzzle camera)
+                    are nested. When the puzzle is successfully completed, it signals to ModeSwap to disable the puzzle/related assets.
+    Citations:  Code developed by following Dream Game Creations's 3D Ball Sort tutorial on Youtube. (https://www.youtube.com/watch?v=5kI2bIeec0U&list=PLvw5MDqEo9YLISdYRQmGy9fYN6EtjTtZG&index=8)
+                The code to check the win condition for the game is self-created.
+*/
+
+
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -6,7 +17,7 @@ using UnityEngine;
 
 public class BallSortPuzzleManager : MonoBehaviour
 {
-    public static BallSortPuzzleManager instance;
+    public static BallSortPuzzleManager instanceBall;
     public GameObject ballSortManager;
     [SerializeField] private GameObject[] Flasks;
     [SerializeField] private GameObject prizeDrawer;
@@ -19,7 +30,7 @@ public class BallSortPuzzleManager : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        instanceBall = this;
     }
 
     // Start is called before the first frame update
@@ -56,7 +67,7 @@ public class BallSortPuzzleManager : MonoBehaviour
             // Resume first-person mode, remove UI text, and destroy game instance
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-            Destroy(instance);
+            Destroy(instanceBall);
             uiText1.SetActive(false);
             // Transform out drawer and puzzle 1 prize items
             prizeDrawer.transform.localPosition = new Vector3(0f, 0.2278563f, 0.7f);
